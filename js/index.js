@@ -30,11 +30,14 @@ function calcularNota3() {
         nota3Input.value = nota3Necessaria.toFixed(2);
 
         if (nota3Necessaria > 100) {
-            resultadoDiv.innerHTML = "Nota necessária no SSA-3: " + nota3Necessaria.toFixed(2);
+            resultadoDiv.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Nota necessária no SSA-3: ' + nota3Necessaria.toFixed(2);
+            resultadoDiv.style.backgroundColor = "rgb(253, 253, 106)"; 
         } else if (nota3Necessaria < 0) {
-            resultadoDiv.innerHTML = "Você já passou!";
+            resultadoDiv.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Você já passou!';
+            resultadoDiv.style.backgroundColor = "rgb(253, 253, 106)"; 
         } else {
-            resultadoDiv.innerHTML = "Nota necessária no SSA-3: " + nota3Necessaria.toFixed(2);
+            resultadoDiv.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Nota necessária no SSA-3: ' + nota3Necessaria.toFixed(2);
+            resultadoDiv.style.backgroundColor = "rgb(253, 253, 106)";
         }
 
         resultadoDiv.style.display = "block";
@@ -57,10 +60,8 @@ function mostrarDetalhes(nota1, nota2, notaRedacao, nota3, notaCorte, mediaFinal
     const notaCorteDetalhe = document.getElementById("notaCorteCurso");
     const classificacaoDetalhe = document.getElementById("classificacao");
 
-    // Calcular a média final ponderada
     const notaFinal = ((nota1 + nota2 + notaRedacao + nota3) / 4).toFixed(2);
 
-    // Atualizar o conteúdo das divs de detalhes
     nota1Detalhe.innerText = nota1.toFixed(2);
     nota2Detalhe.innerText = nota2.toFixed(2);
     notaRedacaoDetalhe.innerText = notaRedacao.toFixed(2);
@@ -68,13 +69,21 @@ function mostrarDetalhes(nota1, nota2, notaRedacao, nota3, notaCorte, mediaFinal
     notaCorteDetalhe.innerText = notaCorte.toFixed(2);
     notaFinalDetalhe.innerText = mediaFinal.toFixed(2);
 
-    // Determinar a classificação
     if (nota3 > 100) {
         classificacaoDetalhe.innerText = "Reprovado (Impossível passar, nota necessária > 100)";
     } else {
         classificacaoDetalhe.innerText = "Aprovado!";
     }
 
-    // Garantir que a div de detalhes seja exibida
     detalhesDiv.style.display = "block";
+}
+
+function limparTudo() {
+    document.getElementById("nota1").value = "";
+    document.getElementById("nota2").value = "";
+    document.getElementById("notaRedacao").value = "";
+    document.getElementById("nota3").value = "";
+    document.getElementById("resultado").innerHTML = "";
+    document.getElementById("resultado").style.display = "none";
+    document.getElementById("detalhes").style.display = "none";
 }
