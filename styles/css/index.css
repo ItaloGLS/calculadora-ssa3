@@ -85,7 +85,7 @@ button {
     background-color: #dddddd;
 }
 
-@media (max-width: 736px) {
+@media (max-width: 796px) {
     .container{
         width: 60vw;
     }
